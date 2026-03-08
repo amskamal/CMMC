@@ -1,0 +1,30 @@
+﻿@model CMMS.Models.Department
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DedpartmentDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DedpartmentDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index"><i class="fas fa-undo-alt"></i></a> |
+    <a asp-action="Edit" asp-route-id="@Model.DeptId"><i class="far fa-edit"></i></a>
+</div>

@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CMMS.Models.Equipment>
+
+<form method="get" asp-controller="Equipments" asp-action="Index" class="row">
+
+    <label class="col-2">page Size</label>
+    <br />
+    <input type="number" name="pageSize" class="col-2 form-control" value="@ViewBag.pageSize" />
+
+    <label class="col-2">page Number</label>
+    <br />
+    <input type="number" name="pageNumber" class="col-2 form-control" value="@ViewBag.pageNUmber" />
+
+    <button class="btn btn-primary"><i class="fas fa-rocket"></i></button>
+</form>
+<hr />
+<p>Search  by Departmnet:</p>
+<form method="get" asp-controller="Equipments" asp-action="Index" class="row">
+    <select class="form-control col-2" name="departmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName",ViewBag.SelectDepartmentId))">
+
+        <option value="0">All Departments</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<hr />
+<p>Search  by Vendor:</p>
+<form method="get" asp-controller="Equipments" asp-action="Index" class="row">
+    <select class="form-control col-2" name="vendId" asp-items="@(new SelectList(ViewBag.AllVendors, "VendorId", "VendorFullName",ViewBag.selectVendorId))">
+
+        <option value="0">All Vendors</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search by Equipment's name:</p>
+<form method="get" asp-controller="Equipments" asp-action="Index" class="row">
+    <input name="searchText" value="@ViewBag.currentSearch  " class="col-2" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<a asp-controller="Equipments" asp-action="create" class="btn btn-primary"><i class="fas fa-plus-circle"></i></a>
+<br />
+
+@if (Model.ToList().Count > 0)
+{
+    <table class="table-bordered table table-hover  table-striped">
+        <thead style="background-color: ThreeDDarkShadow">
+
+            <tr>
+                <th>
+                    <center>
+                        Equipment Name
+                        <a style="color:darkturquoise" asp-controller="Equipments" asp-action="Index" asp-route-sortType="asc">
+                            asc
+                        </a> | <a style="color:darkturquoise" asp-controller="Equipments" asp-action="Index" asp-route-sortType="desc">
+                            desc
+                        </a>
+                    </center>
+                </th>
+                <th><center>Equipment Serial No</center></th>
+                <th><center>Equipment installation Date</center></th>
+                <th><center>Equipment Quantity</center></th>
+                <th><center>Equipment Cost</center></th>
+                <th><center>Equipment Warranty Date</center></th>
+                <th><center>Equipment Current Status</center></th>
+                <th><center>Equipment Vendor </center></th>
+                <th><center>Equipment Department </center></th>
+                <th><center>View</center></th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><center>@item.EqName</center></td>
+                    <td><center>@item.EqSerialNo</center></td>
+                    <td><center>@item.EqInstallatonDate</center></td>
+                    <td><center>@item.EqQuantity</center></td>
+                    <td><center>@item.EqCost</center></td>
+                    <td><center>@item.EqWarrantyDate</center></td>
+                    <td><center>@item.EqCurrentStatus</center></td>
+                    <td><center>@item.Vendor.VendorFullName</center></td>
+                    <td><center>@item.Department.DepartmentName</center></td>
+                    <td>
+                        <center>
+                            <a asp-controller="Equipments" asp-action="Edit" asp-route-id="@item.EqId"><i class="far fa-edit"></i></a> |
+                            <a asp-controller="Equipments" asp-action="Details" asp-route-id="@item.EqId"><i class="fas fa-info-circle"></i></a> |
+                            <a asp-controller="Equipments" asp-action="Delete" asp-route-id="@item.EqId"><i class="far fa-trash-alt"></i></a>
+                        </center>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="background-color: ThreeDDarkShadow">
+
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger">there is no data to display</h1>
+}
+
+<hr />
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-undo-alt"></i></a>

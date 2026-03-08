@@ -1,0 +1,143 @@
+﻿@model CMMS.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.MaintenaceId)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.MaintenaceId)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.DepartmentId)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Department.DepartmentName) | @Html.DisplayFor(item => item.Department.DedpartmentDescription)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.VenId)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Vendor.VendorFullName) | @Html.DisplayFor(item => item.Vendor.VendorAddress)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.EquipmentId)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqName) | @Html.DisplayFor(item => item.Equipment.EqInstallatonDate)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.MaintenaceDoneOn)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.MaintenaceDoneOn)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.MaintenaceDueOn)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.MaintenaceDueOn)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.EngineerId)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Engineer.EngFullName) | @Html.DisplayFor(item => item.Engineer.EngPhoneNo)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.EngRemarks)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.EngRemarks)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.UserRemarks)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.UserRemarks)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.BreakDownDate)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.BreakDownDate)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.BreakDownDetails)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.BreakDownDetails)</center></dd>
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.RectDate != DateTime.MinValue)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.RectDate)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.RectDate)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.UsingAfterRectDate != DateTime.MinValue)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.UsingAfterRectDate)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.UsingAfterRectDate)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.DownTime != 0)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.DownTime)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.DownTime)</center></dd>
+        }
+    </dl>
+    <hr />
+     <dl>
+        @if (Model.ResponseTime != 0)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.ResponseTime)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.ResponseTime)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.RectDetails != null)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.RectDetails)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.RectDetails)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.RectCost != 0)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.RectCost)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.RectCost)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.RecEngRemarks != null)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.RecEngRemarks)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.RecEngRemarks)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.RecUserRemarks != null)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.RecUserRemarks)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.RecUserRemarks)</center></dd>
+        }
+    </dl>
+    <hr />
+    <dl>
+        @if (Model.EngPerformance != null)
+        {
+            <dt class="col-2"><center>@Html.DisplayNameFor(item => item.EngPerformance)</center></dt>
+            <dd class="col-10"><center>@Html.DisplayFor(item => item.EngPerformance)</center></dd>
+        }
+    </dl>
+    <hr />
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MaintenaceId"><i class="far fa-edit"></i></a> |
+    <a asp-action="Index"><i class="fas fa-undo-alt"></i></a>
+</div>

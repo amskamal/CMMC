@@ -1,0 +1,48 @@
+﻿@model CMMS.Models.User
+
+<h1 style="background-color:lightgray; color:darkslategray">Edit:</h1>
+
+<form method="post" asp-controller="Users" asp-action="Edit">
+
+    <input hidden asp-for="UserId" />
+
+    <div class="row">
+        <label asp-for="UserFullName" class="col-5"></label>
+        <input asp-for="UserFullName" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UserFullName"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DepartmentId" class="col-5"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Department....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="DepartmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="UserEmail" class="col-5"></label>
+        <input asp-for="UserEmail" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UserEmail"></span>
+    </div>
+    <div class="row">
+        <label asp-for="UserConfirmEmaill" class="col-5"></label>
+        <input asp-for="UserConfirmEmaill" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UserConfirmEmaill"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="UserPhoneNo" class="col-5"></label>
+        <input asp-for="UserPhoneNo" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UserPhoneNo"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">save</button>
+    <hr />
+    <a asp-controller="Users" asp-action="index"><i class="fas fa-undo-alt"></i></a>
+    <br />
+    <div asp-validation-summary="All"></div>
+</form>

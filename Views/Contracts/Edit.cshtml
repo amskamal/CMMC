@@ -1,0 +1,48 @@
+﻿@model CMMS.Models.Contract
+
+<h1 style="background-color:lightgray; color:darkslategray">Edit:</h1>
+
+<form method="post" asp-controller="Contracts" asp-action="Edit">
+
+    <div class="row">
+        <label asp-for="EquipmentId" class="col-5"></label>
+        <select asp-for="EquipmentId" asp-items="@(new SelectList(ViewBag.AllEquipments, "EqId", "EqName"))" class="col-4 form-control">
+
+            <option disabled selected>select the Equipment....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="EquipmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ContractDate" class="col-5"></label>
+        <input asp-for="ContractDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="ContractDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ContractStatus" class="col-5"></label>
+        <input asp-for="ContractStatus" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="ContractStatus"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ContractStatus" class="col-5"></label>
+        <input asp-for="ContractStatus" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="ContractType"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ContractCost" class="col-5"></label>
+        <input asp-for="ContractCost" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="ContractCost"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">save</button>
+    <hr />
+    <a asp-controller="Contracts" asp-action="index"><i class="fas fa-undo-alt"></i></a>
+    <br />
+    <div asp-validation-summary="All"></div>
+
+
+</form>

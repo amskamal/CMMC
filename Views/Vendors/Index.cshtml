@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CMMS.Models.Vendor>
+
+<form method="get" asp-controller="Vendors" asp-action="Index" class="row">
+
+    <label class="col-2">page Size</label>
+    <br />
+    <input type="number" name="pageSize" class="col-2 form-control" value="@ViewBag.pageSize" />
+
+    <label class="col-2">page Number</label>
+    <br />
+    <input type="number" name="pageNumber" class="col-2 form-control" value="@ViewBag.pageNUmber" />
+
+    <button class="btn btn-primary"><i class="fas fa-rocket"></i></button>
+</form>
+<hr />
+
+<form method="get" asp-controller="Vendors" asp-action="Index" class="row">
+    <label class="col-2">search by Full Name:</label>
+    <input name="searchText" value="@ViewBag.currentSearch  " class="col-2" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+<form method="get" asp-controller="Vendors" asp-action="Index" class="row">
+    <label class="col-2">search by Name:</label>
+    <select class="form-control col-2" name="venId" asp-items="@(new SelectList(ViewBag.AllVendors, "VendorId", "VendorFullName",ViewBag.selectVendorId))">
+
+        <option value="0">All vendors</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<a asp-controller="Vendors" asp-action="Create" class="btn btn-primary"><i class="fas fa-plus-circle"></i></a>
+<br />
+
+@if (Model.ToList().Count > 0)
+{
+    <table class="table-bordered table table-hover  table-striped">
+        <thead style="background-color: ThreeDDarkShadow">
+
+            <tr>
+                <th class="col-2">
+                    <center>
+                        vendor Name
+                        <a style="color:darkturquoise" asp-controller="Vendors" asp-action="Index" asp-route-sortType="asc">
+                            asc
+                        </a> | <a style="color:darkturquoise" asp-controller="Vendors" asp-action="Index" asp-route-sortType="desc">
+                            desc
+                        </a>
+                    </center>
+                </th>
+                <th><center>vendor Email</center></th>
+                <th><center>Vendor Phone No</center></th>
+                <th><center>Vendor Address</center></th>
+                <th class="col-2"><center>View</center></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><center>@item.VendorFullName</center></td>
+                    <td><center>@item.VendorEmail</center></td>
+                    <td><center>@item.VendorPhoneNo</center></td>
+                    <td><center>@item.VendorAddress</center></td>
+                    <td>
+                        <center>
+                            <a asp-controller="Vendors" asp-action="Edit" asp-route-id="@item.VendorId"><i class="far fa-edit"></i></a> |
+                            <a asp-controller="Vendors" asp-action="Details" asp-route-id="@item.VendorId"><i class="fas fa-info-circle"></i></a> |
+                            <a asp-controller="Vendors" asp-action="Delete" asp-route-id="@item.VendorId"><i class="far fa-trash-alt"></i></a>
+                        </center>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="background-color: ThreeDDarkShadow">
+
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger">there is no data to display</h1>
+}
+
+<hr />
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-undo-alt"></i></a>

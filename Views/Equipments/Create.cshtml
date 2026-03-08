@@ -1,0 +1,75 @@
+﻿@model CMMS.Models.Equipment
+
+
+<h1 style="background-color:lightgray; color:darkslategray">Create:</h1>
+
+<form method="post" asp-controller="Equipments" asp-action="Create">
+    <div class="row">
+        <label asp-for="EqName" class="col-5"></label>
+        <input asp-for="EqName" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqName"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DepartmentId" class="col-5"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Department....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="DepartmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="VenId" class="col-5"></label>
+        <select asp-for="VenId" asp-items="@(new SelectList(ViewBag.AllVendors, "VendorId", "VendorFullName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Vendor....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="VenId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqSerialNo" class="col-5"></label>
+        <input asp-for="EqSerialNo" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqSerialNo"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqInstallatonDate" class="col-5"></label>
+        <input asp-for="EqInstallatonDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqInstallatonDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqQuantity" class="col-5"></label>
+        <input asp-for="EqQuantity" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqQuantity"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqCost" class="col-5"></label>
+        <input asp-for="EqCost" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqCost"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqWarrantyDate" class="col-5"></label>
+        <input asp-for="EqWarrantyDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqWarrantyDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EqCurrentStatus" class="col-5"></label>
+        <input asp-for="EqCurrentStatus" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EqCurrentStatus"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">save</button>
+    <hr />
+    <a asp-controller="Equipments" asp-action="index"><i class="fas fa-undo-alt"></i></a>
+    <br />
+    <div asp-validation-summary="All"></div>
+
+
+</form>

@@ -1,0 +1,146 @@
+﻿@model CMMS.Models.Maintenance
+
+<h1 style="background-color:lightgray; color:darkslategray">Edit:</h1>
+
+<form method="post" asp-controller="Maintenances" asp-action="Edit">
+
+
+    <div class="row">
+        <label asp-for="DepartmentId" class="col-5"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Department....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="DepartmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="VenId" class="col-5"></label>
+        <select asp-for="VenId" asp-items="@(new SelectList(ViewBag.AllVendors, "VendorId", "VendorFullName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Vendor....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="VenId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EquipmentId" class="col-5"></label>
+        <select asp-for="EquipmentId" asp-items="@(new SelectList(ViewBag.AllEquipments, "EqId", "EqName"))" class="col-4 form-control">
+
+            <option disabled selected>select the Equipment....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="EquipmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="MaintenaceDoneOn" class="col-5"></label>
+        <input asp-for="MaintenaceDoneOn" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="MaintenaceDoneOn"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="MaintenaceDueOn" class="col-5"></label>
+        <input asp-for="MaintenaceDueOn" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="MaintenaceDueOn"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EngineerId" class="col-5"></label>
+        <select asp-for="EngineerId" asp-items="@(new SelectList(ViewBag.AllEngineers, "EngId", "EngFullName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Engineer....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="EngineerId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EngRemarks" class="col-5"></label>
+        <input asp-for="EngRemarks" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EngRemarks"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="UId" class="col-5"></label>
+        <select asp-for="UId" asp-items="@(new SelectList(ViewBag.AllUsers, "UserId", "UserFullName"))" class="col-4 form-control">
+
+            <option disabled selected>select a User....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="UId"></span>
+    </div>
+
+
+    <div class="row">
+        <label asp-for="UserRemarks" class="col-5"></label>
+        <input asp-for="UserRemarks" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UserRemarks"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="BreakDownDate" class="col-5"></label>
+        <input asp-for="BreakDownDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="BreakDownDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="BreakDownDetails" class="col-5"></label>
+        <input asp-for="BreakDownDetails" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="BreakDownDetails"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="RectDate" class="col-5"></label>
+        <input asp-for="RectDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="RectDate"></span>
+    </div>
+
+     <div class="row">
+        <label asp-for="UsingAfterRectDate" class="col-5"></label>
+        <input asp-for="UsingAfterRectDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="UsingAfterRectDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="RectDetails" class="col-5"></label>
+        <input asp-for="RectDetails" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="RectDetails"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="RecEngRemarks" class="col-5"></label>
+        <input asp-for="RecEngRemarks" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="RecEngRemarks"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="RecUserRemarks" class="col-5"></label>
+        <input asp-for="RecUserRemarks" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="RecUserRemarks"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="RectCost" class="col-5"></label>
+        <input asp-for="RectCost" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="RectCost"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="EngPerformance" class="col-5"></label>
+        <input asp-for="EngPerformance" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="EngPerformance"></span>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">save</button>
+    <hr />
+    <a asp-controller="Maintenances" asp-action="index"><i class="fas fa-undo-alt"></i></a>
+    <br />
+    <div asp-validation-summary="All"></div>
+
+
+</form>

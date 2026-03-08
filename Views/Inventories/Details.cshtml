@@ -1,0 +1,81 @@
+﻿@model CMMS.Models.Inventory
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqName)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqName)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqQuantity)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqQuantity)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqSerialNo)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqSerialNo)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqInstallatonDate)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqInstallatonDate)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqCost)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqCost)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqWarrantyDate)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqWarrantyDate)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Equipment.EqCurrentStatus)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Equipment.EqCurrentStatus)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Vendor.VendorFullName)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Vendor.VendorFullName)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Vendor.VendorPhoneNo)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Vendor.VendorPhoneNo)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Department.DepartmentName)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Department.DepartmentName)</center></dd>
+    </dl>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Department.DedpartmentDescription)</center></dt>
+        <dd class="col-10"><center>@Html.DisplayFor(item => item.Department.DedpartmentDescription)</center></dd>
+    </dl>
+    <hr />
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.InventoryId"><i class="far fa-edit"></i></a> |
+    <a asp-action="Index"><i class="fas fa-undo-alt"></i></a>
+</div>

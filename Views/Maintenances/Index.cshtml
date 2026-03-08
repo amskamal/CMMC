@@ -1,0 +1,256 @@
+﻿@model IEnumerable<CMMS.Models.Maintenance>
+
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+
+    <label class="col-2">page Size</label>
+    <br />
+    <input type="number" name="pageSize" class="col-2 form-control" value="@ViewBag.pageSize" />
+
+    <label class="col-2">page Number</label>
+    <br />
+    <input type="number" name="pageNumber" class="col-2 form-control" value="@ViewBag.pageNUmber" />
+
+    <button class="btn btn-primary"><i class="fas fa-rocket"></i></button>
+</form>
+<hr />
+<p>Search  by Departmnet:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <select class="form-control col-2" name="departmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName",ViewBag.SelectDepartmentId))">
+
+        <option value="0">All Departments</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search  by Vendor:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <select class="form-control col-2" name="vendId" asp-items="@(new SelectList(ViewBag.AllVendors, "VendorId", "VendorFullName",ViewBag.selectVendorId))">
+
+        <option value="0">All Vendors</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search  by Engineer:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <select class="form-control col-2" name="EnginId" asp-items="@(new SelectList(ViewBag.AllEngineers, "EngId", "EngFullName",ViewBag.selectEngineerId))">
+
+        <option value="0">All Engineers</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search  by Equipment:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <select class="form-control col-2" name="equipId" asp-items="@(new SelectList(ViewBag.AllEquipments, "EqId", "EqName",ViewBag.selectEquipmentId))">
+
+        <option value="0">All Equipments</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search  by User:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <select class="form-control col-2" name="usId" asp-items="@(new SelectList(ViewBag.AllUsers, "UserId", "UserFullName",ViewBag.SelectUserId))">
+
+        <option value="0">All Users</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>Search by Maintenance's No:</p>
+<form method="get" asp-controller="Maintenances" asp-action="Index" class="row">
+    <input name="searchText" value="@ViewBag.currentSearch  " class="col-2" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<a asp-controller="Maintenances" asp-action="create" class="btn btn-primary"><i class="fas fa-plus-circle"></i></a>
+<br />
+
+@if (Model.ToList().Count > 0)
+{
+    <table class="table-bordered table table-hover  table-striped">
+        <thead style="background-color: ThreeDDarkShadow">
+
+            <tr>
+                <th>
+                    <center>
+                        Mantinance Id
+                        <a style="color:darkturquoise" asp-controller="Maintenances" asp-action="Index" asp-route-sortType="asc">
+                            asc
+                        </a> | <a style="color:darkturquoise" asp-controller="Maintenances" asp-action="Index" asp-route-sortType="desc">
+                            desc
+                        </a>
+                    </center>
+                </th>
+                <th><center>Department</center></th>
+                <th><center>vendor</center></th>
+                <th><center>Equipment Name</center></th>
+                <th><center>Maintenance Done On</center></th>
+                <th><center>Maintenance Due On</center></th>
+                <th><center>Engineer Name</center></th>
+                <th><center>Engineer Remarks</center></th>
+                <th><center>User Name</center></th>
+                <th><center>User Remarks</center></th>
+                <th><center>Breake Down Date </center></th>
+                <th><center>Breake Details </center></th>
+                <th><center>Rect Date</center></th>
+                <th><center>Using After Rect Date</center></th>
+                <th><center>Down Time</center></th>
+                <th><center>Response Time</center></th>
+                <th><center>Engineer Performance</center></th>
+                <th><center>Rect Details</center></th>
+                <th><center>Rect Engineer Remarks</center></th>
+                <th><center>Rect User Remarks</center></th>
+                <th><center>Rect Cost</center></th>
+                <th><center>View</center></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><center>@item.MaintenaceId</center></td>
+                    <td><center>@item.Department.DepartmentName</center></td>
+                    <td><center>@item.Vendor.VendorFullName</center></td>
+                    <td><center>@item.Equipment.EqName</center></td>
+                    <td><center>@item.MaintenaceDoneOn</center></td>
+                    <td><center>@item.MaintenaceDueOn</center></td>
+                    <td><center>@item.Engineer.EngFullName</center></td>
+                    <td><center>@item.EngRemarks</center></td>
+                    <td><center>@item.User.UserFullName</center></td>
+                    <td><center>@item.UserRemarks</center></td>
+                    <td><center>@item.BreakDownDate</center></td>
+                    <td><center>@item.BreakDownDetails</center></td>
+                    <td>
+                        @if (item.RectDate == DateTime.MinValue)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.RectDate != DateTime.MinValue)
+                        {
+                            <center>@item.RectDate</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.UsingAfterRectDate == DateTime.MinValue)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.UsingAfterRectDate != DateTime.MinValue)
+                        {
+                            <center>@item.UsingAfterRectDate</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.DownTime == 0)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.DownTime != 0)
+                        {
+                            <center>@item.DownTime</center>
+                        }
+                    </td>
+
+                     <td>
+                        @if (item.ResponseTime == 0)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.ResponseTime != 0)
+                        {
+                            <center>@item.ResponseTime</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.EngPerformance == null)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.EngPerformance != null)
+                        {
+                            <center>@item.EngPerformance</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.RectDetails == null)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.RectDetails != null)
+                        {
+                            <center>@item.RectDetails</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.EngRemarks == null)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.EngRemarks != null)
+                        {
+                            <center>@item.EngRemarks</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.UserRemarks == null)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.UserRemarks != null)
+                        {
+                            <center>@item.UserRemarks</center>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.RectCost == 0)
+                        {
+                            <center>-</center>
+                        }
+                        @if (item.RectCost != 0)
+                        {
+                            <center>@item.RectCost</center>
+                        }
+                    </td>
+
+                    <td>
+                        <center>
+                            <a asp-controller="Maintenances" asp-action="Edit" asp-route-id="@item.MaintenaceId"><i class="far fa-edit"></i></a> |
+                            <a asp-controller="Maintenances" asp-action="Details" asp-route-id="@item.MaintenaceId"><i class="fas fa-info-circle"></i></a> |
+                            <a asp-controller="Maintenances" asp-action="Delete" asp-route-id="@item.MaintenaceId"><i class="far fa-trash-alt"></i></a>
+                        </center>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="background-color: ThreeDDarkShadow">
+
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger">there is no data to display</h1>
+}
+
+<hr />
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-undo-alt"></i></a>
